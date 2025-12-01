@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Segmentation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Customer Segmentation</h1>
+        
+        <div class="content-wrapper">
+            <div class="form-section">
+                <h3>Predict Customer Group</h3>
+                <form action="/" method="post">
+                    <label>Annual Income (k$)</label>
+                    <input type="number" name="income" placeholder="e.g. 50" required>
+
+                    <label>Spending Score (1-100)</label>
+                    <input type="number" name="score" placeholder="e.g. 40" required>
+
+                    <button type="submit">Predict Segment</button>
+                </form>
+
+                {% if prediction_text %}
+                <div class="result">
+                    {{ prediction_text }}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="graph-section">
+                <h3>Cluster Visualization</h3>
+                <img src="{{ url_for('static', filename='cluster_plot.png') }}" alt="Cluster Plot">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
